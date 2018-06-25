@@ -1,0 +1,3 @@
+export const HANDEL_CHANGE = 'HANDEL_CHANGE'
+
+export const CHANGE_DIALOG = 'CHANGE_DIALOG'

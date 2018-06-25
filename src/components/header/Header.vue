@@ -1,48 +1,39 @@
 <template>
-<div>
-  <div class="page-cover" v-show="menuShow" @click="isShow"></div>
-  <header class="header" :class="{'show':menuShow}" @click="isShow">
-    <header class="bar bar-nav">
-      <div class="pull-left">
-        <span class="iconfont icon-fenlei"></span>
-      </div>
-      <div class="title">{{headerTitle}}</div>
-      <div class="pull-right">
-        <span class="iconfont icon-sousou_souusou"></span>
-      </div>
-    </header>
-  </header>
-  <v-menu :show="menuShow"></v-menu>
-</div>
+  <div class="header">
+    <img src="./../../assets/dialog.png" class="dialogBtn" @click="showDialog()" />
+    <div class="header-title">干活集中营</div>
+  </div>
 </template>
-<script type="text/ecmascript-6">
-  import {mapState} from 'store'
-  export default
-  {
-    name:'v-header',
-    components:{
-      vMenu
-    },
-    data(){
-      return{
-        show:false
-      };
-    },
-    computed:{
-      ...mapState([
-        'headerTitle','menuShow'
-      ])
-    },
-    methods:{
-      isShow(){
-        this.$store.commit('UPDATE_MENUSHOW');
-      },
-      hideDetail(){
-        this.detailShow=false;
-      }
+
+<script>
+import * as type from './../../store/type'
+export default {
+  name: 'Header',
+  methods: {
+    showDialog () {
+      this.$store.dispatch(type.CHANGE_DIALOG)
     }
   }
+}
 </script>
+
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "Header.styl";
+  .header {
+    width: 100%;
+    height: 48px;
+    background: #b71c1c;
+    color: #fff;
+    display: flex;
+    img {
+      height: 48px;
+      width: 48px;
+      float: left;
+    }
+    .header-title {
+      width: 90%;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+    }
+  }
 </style>
